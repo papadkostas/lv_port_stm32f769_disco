@@ -8,7 +8,6 @@
  ******************************************************************************
  */
 
-
 #include "stm32f7xx.h"
 #include "stm32f769i_discovery.h"
 #include "hal_stm_lvgl/tft/tft.h"
@@ -19,9 +18,6 @@
 static void SystemClock_Config(void);
 static void CPU_CACHE_Enable(void);
 
-//static uint8_t buf[LV_IMG_BUF_SIZE_TRUE_COLOR(200, 200)];
-
-void g_test(void);
 int main(void){
 
 	/* Enable the CPU Cache */
@@ -41,29 +37,15 @@ int main(void){
 
 	SystemClock_Config();
 
-
 	lv_init();
-
 	tft_init();
 	touchpad_init();
-
 	lv_demo_widgets();
+
 	while (1)
 	{
 		HAL_Delay(10);
-//		t1 = lv_tick_get();
 		lv_task_handler();
-//		memset(buf, 0xFF, sizeof(buf));
-//		lv_canvas_rotate(canvas, &tree, a, 20, 50, 80, 50);
-//		tdiff = lv_tick_elaps(t1);
-//			a++;
-//		if(a > 360) a = 0;
-	}
-
-	while(1) {
-		lv_task_handler();
-		HAL_Delay(5);
-
 	}
 }
 
